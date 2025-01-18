@@ -10,6 +10,7 @@ function App() {
     expectedReturn:6,
     duration:10
 })
+const inputIsVaild = userInput.duration >= 1 ;
 function handelChange( inputIdentifier ,newValue){
     setUserInput( prev => {
         return{
@@ -22,7 +23,10 @@ function handelChange( inputIdentifier ,newValue){
    <>
     <Headar/>
     <UserInput userInput ={userInput} onChangeInput={handelChange}/>
-    <Results input ={userInput}/>
+    { ! inputIsVaild && <p className="center">
+      Please enter a duration greetar than Zero.
+      </p>}
+    {inputIsVaild && <Results input ={userInput}/>}
    </>
   )
 }
